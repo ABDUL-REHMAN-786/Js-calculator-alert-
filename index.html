@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -58,6 +58,151 @@
 <body>
   <h2> Java Script Calculator</h2>
   <button class="start-btn" onclick="calculator()">Start Calculator</button>
+
+  <footer>Developed by Abdul Rehman</footer>
+
+  <script>
+    let running = true;
+
+    // ✅ Function: only valid number accept
+    function getValidNumber(message) {
+      let num;
+      while (true) {
+        num = prompt(message);
+        if (num === null) return null; // cancel
+        if (!isNaN(num) && num.trim() !== "") {
+          return Number(num);
+        } else {
+          alert("❌ Invalid input! Please enter a valid number.");
+        }
+      }
+    }
+
+    // ✅ Function: only valid operator accept
+    function getValidOperator(message) {
+      let op;
+      const validOps = ["+", "-", "*", "/"];
+      while (true) {
+        op = prompt(message);
+        if (op === null) return null; // cancel
+        if (validOps.includes(op.trim())) {
+          return op;
+        } else {
+          alert("❌ Invalid operator! Please enter only (+, -, *, /).");
+        }
+      }
+    }
+
+    function calculator() {
+      running = true;
+      while (running) {
+        let num1 = getValidNumber("Enter first number:");
+        if (num1 === null) break;
+
+        let operator = getValidOperator("Enter operator (+, -, *, /):");
+        if (operator === null) break;
+
+        let num2 = getValidNumber("Enter second number:");
+        if (num2 === null) break;
+
+        let result;
+        switch (operator) {
+          case "+": result = num1 + num2; break;
+          case "-": result = num1 - num2; break;
+          case "*": result = num1 * num2; break;
+          case "/": result = num2 !== 0 ? num1 / num2 : "Error (divide by 0)"; break;
+        }
+
+        alert("Result: " + result);
+
+        let choice = prompt("Do you want to calculate again? (yes / no)");
+        if (!choice || choice.toLowerCase() !== "yes") {
+          running = false;
+          location.reload(); // Exit with reload
+        }
+      }
+    }
+  </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Colorful JS Calculator</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    button {
+      padding: 14px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 8px 15px rgba(0,0,0,0.5);
+    }
+
+    .start-btn {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: white;
+      font-weight: bold;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      width: 100%;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>🎨 Colorful JS Calculator</h2>
+    <button class="start-btn" onclick="calculator()">Start Calculator</button>
+  </div>
 
   <footer>Developed by Abdul Rehman</footer>
 
